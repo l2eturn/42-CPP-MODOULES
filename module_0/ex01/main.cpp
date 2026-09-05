@@ -1,56 +1,62 @@
 #include <iostream>
 #include <string>
-#include "Contact.hpp"
 #include "Phonebook.hpp"
 
-void	assigned_contact(Contact *a_contact)
+static bool	readField(const std::string &label, std::string &value)
 {
-	std::string	tmp;
-
-	std::cout << "What's your firstname\n";
-	std::cin >> tmp;
-	a_contact->setFirstname(tmp);
-
-	std::cout << "What 'bout your lastname\n";
-	std::cin >> tmp;
-	a_contact->setLastname(tmp);
-
-	std::cout << "What's your nickname\n";
-	std::cin >> tmp;
-	a_contact->setNickname(tmp);
-
-	std::cout << "Gimme your number, Call me may be :>" << std::endl;
-	std::cin >> tmp;
-	a_contact->setPhonenumber(tmp);
-
-	std::cout << "Tell me your favorite color, wanna know you\n";
-	std::cin >> tmp;
-	a_contact->setDarkestsecret(tmp);
+	while (true)
+	{
+		std::cout << label << ": ";
+		if (!std::getline(std::cin, value))
+			return (false);
+		if (!value.empty())
+			return (true);
+		std::cout << "This field cannot be empty." << std::endl;
+	}
 }
 
-int main(void)
+static bool	readContact(Contact &contact)
 {
-	std::string mode;
-	Phonebook	yellow_book;
-	Contact 	a_contact;
+	std::string value;
 
-	yellow_book.initialize(); 
-	while (1)
+	if (!readField("First name", value))
+		return (false);
+	contact.setFirstName(value);
+	if (!readField("Last name", value))
+		return (false);
+	contact.setLastName(value);
+	if (!readField("Nickname", value))
+		return (false);
+	contact.setNickname(value);
+	if (!readField("Phone number", value))
+		return (false);
+	contact.setPhoneNumber(value);
+	if (!readField("Darkest secret", value))
+		return (false);
+	contact.setDarkestSecret(value);
+	return (true);
+}
+
+int	main(void)
+{
+	PhoneBook	phonebook;
+	std::string	command;
+
+	while (true)
 	{
-		std::cin >> mode;
-		if (!mode.compare("ADD"))
+		std::cout << "Enter a command (ADD / SEARCH / EXIT): ";
+		if (!std::getline(std::cin, command))
+			break ;
+		if (command == "ADD")
 		{
-			assigned_contact(&a_contact);
-			yellow_book.addContact(a_contact);
+			Contact contact;
+			if (readContact(contact))
+				phonebook.addContact(contact);
 		}
-
-		else if (!mode.compare("SEARCH"))
-			yellow_book.searchContact();
-
-		else if (!mode.compare("EXIT"))
-			break;
-
-		else
-			std::cout << "INPUT AVAILDABLE : ADD, SEARCH, EXIT\n";
+		else if (command == "SEARCH")
+			phonebook.searchContact();
+		else if (command == "EXIT")
+			break ;
 	}
+	return (0);
 }
