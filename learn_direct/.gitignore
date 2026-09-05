@@ -1,0 +1,27 @@
+# build artifacts
+*.o
+*.replace
+
+# executables (ชื่อจาก NAME ใน Makefile ของแต่ละ ex)
+module_0/ex00/megaphone
+module_0/ex01/phonebook
+module_0/ex02/account
+module_1/ex00/zombie
+module_1/ex01/horde
+module_1/ex02/brain
+module_1/ex03/violence
+module_1/ex04/sedislame
+module_1/ex05/harl
+module_1/ex06/harlFilter
+module_2/ex00/fixed
+module_2/ex01/fixed
+module_2/ex02/fixed
+module_2/ex03/bsp
+module_3/ex00/claptrap
+module_3/ex01/scavtrap
+module_3/ex02/fragtrap
+module_3/ex03/diamondtrap
+module_4/ex00/polymorphism
+module_4/ex01/brain
+module_4/ex02/abstract
+module_4/ex03/materia
