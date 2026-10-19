@@ -42,7 +42,7 @@ int	main(void)
 	PhoneBook	phonebook;
 	std::string	command;
 
-	while (true)
+	while (1)
 	{
 		std::cout << "Enter a command (ADD / SEARCH / EXIT): ";
 		if (!std::getline(std::cin, command))
