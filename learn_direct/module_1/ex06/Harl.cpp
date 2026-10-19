@@ -43,11 +43,12 @@ void	Harl::error(void)
 Harl::Level	Harl::parseLevel(const std::string &level)
 {
 	const std::string	names[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	const Level			levels[4] = {DEBUG, INFO, WARNING, ERROR};
 
 	for (int i = 0; i < 4; ++i)
 	{
 		if (names[i] == level)
-			return (static_cast<Level>(i));
+			return (levels[i]);
 	}
 	return (UNKNOWN);
 }

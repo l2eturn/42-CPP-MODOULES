@@ -66,9 +66,9 @@ void	PhoneBook::add(void)
 ** ตัดข้อความให้พอดีคอลัมน์: ถ้ายาวเกิน width ให้เอา width-1 ตัวแรก + '.'
 ** เช่น width 10, "Bartholomew" (11 ตัว) -> "Bartholom."
 */
-std::string	PhoneBook::_truncate(const std::string &value, int width)
+std::string	PhoneBook::_truncate(const std::string &value, std::size_t width)
 {
-	if (static_cast<int>(value.length()) <= width)
+	if (value.length() <= width)
 		return (value);
 	return (value.substr(0, width - 1) + ".");
 }

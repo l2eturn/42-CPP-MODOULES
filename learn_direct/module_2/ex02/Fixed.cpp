@@ -17,7 +17,7 @@ Fixed::Fixed(const int value) : _value(value << _fractionalBits)
 }
 
 Fixed::Fixed(const float value) :
-	_value(static_cast<int>(roundf(value * (1 << _fractionalBits))))
+	_value(roundf(value * (1 << _fractionalBits)))
 {
 }
 
@@ -44,7 +44,7 @@ void	Fixed::setRawBits(int const raw)
 
 float	Fixed::toFloat(void) const
 {
-	return (static_cast<float>(_value) / (1 << _fractionalBits));
+	return ((float)_value / (1 << _fractionalBits));
 }
 
 int	Fixed::toInt(void) const

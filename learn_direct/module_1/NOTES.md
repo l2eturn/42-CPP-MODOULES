@@ -178,7 +178,8 @@ switch (parseLevel(level)) {
 enum Level { DEBUG = 0, INFO = 1, WARNING = 2, ERROR = 3, UNKNOWN = 4 };
 ```
 ให้ค่าเป็น 0..3 เพื่อ map กับ index ของ array ได้ตรงๆ
-และ `static_cast<Level>(i)` แปลง int → enum ได้
+แปลง index → enum โดยไม่ต้อง cast: ทำ array `const Level levels[4] = {DEBUG, INFO, WARNING, ERROR};`
+แล้ว `return (levels[i]);` (cast อยู่ใน module 06 ยังไม่ต้องใช้)
 
 ---
 

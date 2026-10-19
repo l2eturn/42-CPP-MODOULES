@@ -35,7 +35,7 @@ class PhoneBook
 
 		static bool			_promptField(const std::string &label,
 								std::string &out);
-		static std::string	_truncate(const std::string &value, int width);
+		static std::string	_truncate(const std::string &value, std::size_t width);
 };
 
 #endif

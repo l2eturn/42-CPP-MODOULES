@@ -67,12 +67,12 @@ int Account::_nbAccounts = 0; // ต้อง "นิยาม" ใน .cpp เ�
 ส่ง `char` ที่ติดลบเข้าไป = undefined behavior
 
 ```cpp
-std::cout << static_cast<char>(std::toupper(static_cast<unsigned char>(c)));
+unsigned char	c = argv[i][j];        // char -> unsigned char (implicit)
+char			upper = std::toupper(c); // int -> char (implicit)
 ```
 
-**`static_cast` ต่างจาก `(char)` อย่างไร?** ทำงานเหมือนกันในเคสนี้ แต่ `static_cast`
-ค้นหาง่ายด้วย grep, และ compiler ปฏิเสธการแปลงที่ไม่สมเหตุสมผลให้ (เช่นข้าม type ที่ไม่เกี่ยวกัน)
-subject บอก *"Solve the exercises in a C++ manner"* — cast แบบ C++ คือส่วนหนึ่งของคำตอบนั้น
+**ทำไมไม่ใช้ `static_cast`?** C++ cast (`static_cast`, `dynamic_cast`, ...) อยู่ใน module 06
+ตอนนี้ใช้การกำหนดค่าให้ตัวแปรที่มีชนิดตรงกัน แล้วให้ compiler แปลงให้เอง (implicit conversion) ก็พอ
 
 ---
 
