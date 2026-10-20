@@ -43,7 +43,7 @@ const std::string	&Contact::getLastName(void) const
 	return (_lastName);
 }
 
-const std::string	&Contact::getNickname(void) const
+const std::string & Contact::getNickname(void) const
 {
 	return (_nickname);
 }
