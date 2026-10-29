@@ -35,8 +35,14 @@ bool	Replacer::run() const
 		return (false);
 	}
 
-	std::stringstream	buffer;
-	buffer << infile.rdbuf();
+	std::string	content;
+	std::string	line;
+	while (std::getline(infile, line))
+	{
+		content += line;
+		if (!infile.eof())
+			content += "\n";
+	}
 	infile.close();
 
 	std::string		outname = _filename + ".replace";
@@ -46,7 +52,7 @@ bool	Replacer::run() const
 		std::cerr << "Error: cannot create " << outname << std::endl;
 		return (false);
 	}
-	outfile << replaceAll(buffer.str());
+	outfile << replaceAll(content);
 	outfile.close();
 	return (true);
 }

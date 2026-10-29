@@ -1,6 +1,5 @@
 #include <iomanip>
 #include <iostream>
-#include <sstream>
 #include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook(void) : _count(0), _next(0)
@@ -67,13 +66,11 @@ void	PhoneBook::searchContact(void) const
 	std::cout << "Index: ";
 	if (!std::getline(std::cin, line))
 		return ;
-	std::istringstream stream(line);
-	std::string extra;
-	if (!(stream >> index) || (stream >> extra)
-		|| index < 0 || index >= _count)
+	if (line.length() != 1 || line[0] < '0' || line[0] >= '0' + _count)
 	{
 		std::cout << "Invalid index." << std::endl;
 		return ;
 	}
+	index = line[0] - '0';
 	_displayContact(index);
 }

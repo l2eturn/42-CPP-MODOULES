@@ -2,7 +2,6 @@
 # define REPLACER_HPP
 # include <iostream>
 # include <fstream>
-# include <sstream>
 # include <string>
 
 class Replacer
